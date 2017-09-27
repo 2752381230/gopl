@@ -9,12 +9,14 @@
 package main
 
 import (
-	"bufio"
+	"bufio"    // bufio 包实现了带缓存的I/O操作. io.Reader io.Writer
 	"fmt"
 	"os"
 )
 
 func main() {
+    fmt.Println("ctrl+d to stop the input")
+    fmt.Println("\ninput 'a' != 'a '\n")
 	counts := make(map[string]int)
 	input := bufio.NewScanner(os.Stdin)
 	for input.Scan() {
@@ -29,3 +31,11 @@ func main() {
 }
 
 //!-
+/*
+map[key]val
+    key: 任意类型，其值可用 == 运算符的就可以
+    val: 任意类型
+
+make 函数创建的为空map
+range map 时 key 无序
+*/

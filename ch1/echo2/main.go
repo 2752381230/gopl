@@ -22,3 +22,17 @@ func main() {
 }
 
 //!-
+/*
+var s, sep string
+    // means var s string; var sep string
+s := ""
+    // 只能在函数内使用，不能直接在包内使用
+var s = ""
+    // 没有指明类型，此时能推导出来类型string
+    // 等价于 var s string
+    // var x = 1  此时只能取默认 int 类型
+var s string = ""
+    // "标准"写法，但“less is more”
+
+推荐第一第二种写法，注意第二种在函数内
+*/
