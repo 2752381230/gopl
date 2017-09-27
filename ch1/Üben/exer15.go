@@ -1,11 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// Run with "web" command-line argument for web server.
-// See page 13.
-//!+main
-
-// Lissajous generates GIF animations of random Lissajous figures.
+// exer1.5  Lissajous generates GIF animations of random Lissajous figures with Green color
 package main
 
 import (
@@ -27,8 +20,8 @@ import (
 )
 
 //!+main
-
-var palette = []color.Color{color.White, color.Black}
+// color.RGBA{0xRR, 0xGG, 0xBB, 0xff}  红绿蓝三色设置即可得到对应的颜色值
+var palette = []color.Color{color.White, color.RGBA{0x00, 0xff, 0x00, 0xff}}
 
 const (
 	whiteIndex = 0 // first color in palette

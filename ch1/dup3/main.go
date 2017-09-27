@@ -36,3 +36,6 @@ func main() {
 }
 
 //!-
+/*
+func ReadFile(filename string) ([]byte, error) 返回的是 []byte 类型，需要强制转换为 string
+*/

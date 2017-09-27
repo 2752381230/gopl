@@ -46,3 +46,8 @@ func countLines(f *os.File, counts map[string]int) {
 }
 
 //!-
+/*
+函数和包级别的变量可以任意顺序声明，这点和 shell 不同
+
+counts 作为参数传递到函数时，函数接收的是这个引用的一个copy，即此时函数内部的map也是指向同样的物理底层数据结构
+*/
