@@ -1,4 +1,4 @@
-// exer1.5  Lissajous generates GIF animations of random Lissajous figures with Green color
+// exer1.5 1.6 Lissajous generates GIF animations of random Lissajous figures with Green color
 package main
 
 import (
@@ -21,6 +21,7 @@ import (
 
 //!+main
 // color.RGBA{0xRR, 0xGG, 0xBB, 0xff}  红绿蓝三色设置即可得到对应的颜色值
+// 1.5
 var palette = []color.Color{color.White, color.RGBA{0x00, 0xff, 0x00, 0xff}}
 
 const (
@@ -49,6 +50,7 @@ func main() {
 	lissajous(os.Stdout)
 }
 
+// 1.5
 func my_random() color.Color {
     tmp := make([]uint8, 0)
     for i := 0; i < 3; i++ {
@@ -71,10 +73,12 @@ func lissajous(out io.Writer) {
 	phase := 0.0 // phase difference
 	for i := 0; i < nframes; i++ {
         // palette random the color, but it's only change the line
+        // 1.5
         palette[1] = my_random()
+        // 1.6
         colorIndex := uint8(rand.Intn(4))
         if colorIndex < 1 {colorIndex=1}
-        //
+
 		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
 		img := image.NewPaletted(rect, palette)
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
