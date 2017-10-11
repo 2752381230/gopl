@@ -49,6 +49,15 @@ func main() {
 	lissajous(os.Stdout)
 }
 
+func my_random() color.Color {
+    tmp := make([]uint8, 0)
+    for i := 0; i < 3; i++ {
+        x := rand.Intn(255)
+        tmp = append(tmp, uint8(x))
+    }
+    //return color.RGBA{0x00, 0xff, 0x00, 0xff}
+    return color.RGBA{tmp[0], tmp[1], tmp[2], 0xff}
+}
 func lissajous(out io.Writer) {
 	const (
 		cycles  = 5     // number of complete x oscillator revolutions
@@ -61,13 +70,18 @@ func lissajous(out io.Writer) {
 	anim := gif.GIF{LoopCount: nframes}
 	phase := 0.0 // phase difference
 	for i := 0; i < nframes; i++ {
+        // palette random the color, but it's only change the line
+        palette[1] = my_random()
+        colorIndex := uint8(rand.Intn(4))
+        if colorIndex < 1 {colorIndex=1}
+        //
 		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
 		img := image.NewPaletted(rect, palette)
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
 			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5),
-				blackIndex)
+				colorIndex) //blackIndex)
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
